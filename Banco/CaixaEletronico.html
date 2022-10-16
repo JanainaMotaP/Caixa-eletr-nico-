@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa eletronico</title>
+    <script>
+    
+    var nome = prompt("Qual seu nome?")
+    alert( "Olá  " + nome + " é um prazer ter voce por aqui!"  )
+    var saldo = 100.5;
+    
+    function inicio() {
+		
+		var escolha = parseInt(prompt('Selecione uma opção: 1.)Saldo 2.)Extrato 3.)Saque 4.)Depósito 5.)Tranferencia 6.) Sair '));
+
+		switch(escolha){
+			case 1:
+			ver_saldo();
+			break
+			case 2:
+				ver_extrato();
+			break
+			case 3:
+				fazer_saque();
+			break
+			case 4:
+				fazer_deposito();
+			break
+			case 5:
+				transferencia();
+			case 6:
+				sair();
+			break
+			default:
+				erro();
+			}
+
+
+		}
+    
+    
+    
+		function senha (){
+			const senhaN = 3589;
+			var senhaI= prompt("Por favor, indique a senha:");
+
+			if(senhaI === "" || senhaI !=3589){
+				alert("Senha incorreta");
+				inicio();
+			}
+		}
+
+
+
+		function ver_saldo() {
+			senha();
+
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+
+
+
+		function fazer_deposito() {
+			
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			
+			// Not a Number --> Isso é um não-número?
+			if (isNaN(deposito) || deposito === '' ) {
+				alert('Por favor, informe um número.');
+				fazer_deposito();
+			}
+			 if(deposito < 0){
+				alert("Operação não autorizada");
+				inicio();
+			}
+			else {
+				saldo += deposito;
+				//saldo = saldo + deposito;
+				ver_saldo();
+			}
+			
+		}
+
+
+
+		function fazer_saque() {
+			senha()
+
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+
+			while(saque > saldo || saque == 0 ){
+				alert("Operação não autorizada.")
+				fazer_saque();
+			}
+
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número.');
+				fazer_saque();
+			} else  {
+				saldo -= saque
+				alert("Seu saldo atual é: " + saldo)
+				
+			}
+
+			inicio()
+
+		}
+			
+
+		
+		function ver_extrato(){
+			senha();
+
+			var confirma2 = confirm('Você deseja ver seu extrato?');
+			if (confirma2) {
+				document.write("padaria do seu zé    R$ 20,00    15/04/22 <br>");
+				document.write("sorveteria delicia   R$ 12,90    22/04/22 <br>");
+				document.write("lola sapatos         R$ 78,99    30/04/22 <br>");
+				document.write("pizzaria cumê é bom  R$ 45,00    11/05/22 <br>");
+				document.write("drogaria tubarão     R$ 10,00    20/05/22 <br>");
+				document.write("lojinha calia         R$ 30,00    25/07/22 <br>");
+				
+			} else {
+				inicio();
+
+			}
+				
+		}
+
+		
+
+		function transferencia (){
+			senha()
+
+			var conta = parseFloat(prompt("Digite o numero da conta"));
+			var valorT = parseFloat(prompt("Informe o valor a transferencia"));
+
+	
+			if (isNaN(conta) || transferencia == '') {
+				alert('Por favor, informe um número.');
+				transferencia();
+			} 
+
+			if(valorT > saldo || valorT == 0 || valorT < 0){
+				alert("Operação não autorizada.")
+				inicio();
+			}
+
+			if(true) {
+				saldo -= valorT
+				ver_saldo()
+			}
+
+
+		}
+
+
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 6.');
+			inicio();
+
+		}
+
+
+		
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				alert(nome + ", foi um prazer ter você por aqui!")
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+
+
+		inicio();
+
+
+	</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+    
+    
+    
+    
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
